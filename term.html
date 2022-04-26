@@ -1,0 +1,58 @@
+<div style="color: white;font-family: Consolas,Consolas_;font-size: 16px;line-height: 120%;margin-top: -4px;user-select: none;" id="a"><span style="color: greenyellow">admin@devi</span>:<span style="color: lightblue;">~</span>$ ping 10.25.67.3_</div>
+<script>
+    b = document.getElementById("a")
+    command = "ping 10.25.67.3"
+    onkeydown = (e)=>{
+        console.log("\n----\n",b.innerText,"\n------\n",command)
+        if (e.key == "Enter"){
+            if (command=="crash"){
+                let x = []
+                while(1)x.push(x)
+            }
+            if (command.slice(0,5)=="echo "){
+                b.innerHTML = b.innerHTML.slice(0,b.innerHTML.length-1)+"<br>"+command.slice(5,command.length)+"_"
+            }
+            if (command.slice(0,3) == "js "){
+                try{
+                    b.innerHTML = b.innerHTML.slice(0,b.innerHTML.length-1)+"<br>"+eval(command.slice(3,command.length))+"_"
+                } catch(e){
+                    b.innerHTML = b.innerHTML.slice(0,b.innerHTML.length-1)+"<br>"+e.message+"_"
+                }
+            }
+            command = ""
+            b.innerHTML=b.innerHTML.slice(0,-1)+`<br><span style="color: greenyellow">admin@devi</span>:<span style="color: lightblue;">~</span>$ _`
+            window.scroll(0,10000000)
+            return
+        }
+        if (e.key == "Backspace"){
+            if (command==""){
+                return
+            }
+            b.innerHTML = b.innerHTML.slice(0,-2)+"_"
+            command = command.slice(0,-1)
+            return
+        }
+        if(e.key.length>1){
+            return
+        }
+        command += e.key
+        b.innerHTML = b.innerHTML.slice(0,-1)+e.key+"_"
+    }
+    onclick = (e)=>{top.toTop("term")}
+    
+</script>
+<style>
+    #a::after{
+        content:"_"
+        display: inline;
+    }
+</style>
+<style>
+    *{
+        word-break: break-all;  
+    }
+@font-face{
+    font-family: Consolas_;
+    src: url("/Consolas.ttf");
+}
+</style>

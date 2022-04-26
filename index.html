@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hacking</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="icon">HackerOS</div>
+    <iframe src="/bootup.html" frameBorder="0" style="width: 100vw;height: 100vh;position: absolute;z-index: 999999999999;pointer-events: none;" id="loadings"></iframe>
+    <script>
+        let start = ()=>{document.getElementById("loadings").hidden = true;console.log("rem");document.querySelector("div.taskbar").hidden = false;}
+        let skipper = addEventListener("keydown",(e)=>{if(e.key=="g")start()},{once:true})
+        setTimeout(start,10500)
+    </script>
+    <div id="start" style="width: 10vw;height: auto;position: absolute;top: calc(100vh - 27px);transform: translateY(-100%);font-family: Consolas, Consolas_;border: 1px solid black;background-color: #fff;z-index: 9999999999999999;" hidden>
+        <div width="100%" onclick="location.reload()">Reboot</div>
+        <div width="100%" onclick="document.getElementById('loadings').hidden = false;document.getElementById('loadings').src='/shutdown.html';document.querySelector('div.taskbar').hidden = true">Shutdown</div>
+        <div width="100%" onclick="document.write('Crashing...<br><iframe onload=\'let x = [];while(1)x.push(x)\' style=\'opacity: 0;\'></iframe>')">Crash page</div>
+        <div width="100%" onclick="glitch()">Weird</div>
+    </div>
+    <div class="desktop" ondblclick="document.getElementById('fv').hidden = false;toTop('fv');tbp('fv',true,'File Viewer')">File View</div>
+    <div class="desktop" ondblclick="document.getElementById('cmd').hidden = false;toTop('cmd');tbp('cmd',true,'Command Prompt')">Command<br>prompt</div>
+    <div class="desktop" ondblclick="document.getElementById('term').hidden = false;toTop('term');tbp('term',true,'Terminal')">Terminal</div>
+    <div class="desktop" ondblclick="document.getElementById('code').hidden = false;toTop('code');tbp('code',true,'Code Editor')">Code editor</div>
+    <div class="desktop" ondblclick="document.getElementById('hax').hidden = false;toTop('hax');tbp('hax',true,'HackerType')">HackType</div>
+    <div class="desktop" ondblclick="document.getElementById('prog').hidden = false;toTop('prog');tbp('prog',true,'Connection')">Connect</div>
+    <div class="desktop" ondblclick="document.getElementById('help').hidden = false;toTop('help');tbp('help',true,'Help page')">Help</div>
+    <div class="desktop" ondblclick="document.getElementById('crack').hidden = false;toTop('crack');tbp('crack',true,'Password Cracker')">Password<br>Cracker</div>
+    <div class="taskbar" hidden>
+        <div class="start" onclick="toggleStart()">ÿ</div>
+<!--         <div class="tbi" program="fv" onclick="toTop('fv')">File Viewer</div> -->
+<!--         <div class="tbi" program="cmd" onclick="toTop('cmd')">Command Prompt</div> -->
+<!--         <div class="tbi" program="term" onclick="toTop('term')">Terminal</div> -->
+<!--         <div class="tbi" program="code" onclick="toTop('code')">Code Editor</div> -->
+<!--         <div class="tbi" program="hax" onclick="toTop('hax')">HackType</div> -->
+<!--         <div class="tbi" program="prog" onclick="toTop('prog')">Connection</div> -->
+        <div class="clock">LOADING</div>
+        <script>
+            function updateClock(){
+                document.querySelector("div.clock").innerText = (new Date()).toLocaleTimeString("en-US")
+                requestAnimationFrame(updateClock)
+            }
+            updateClock()
+        </script>
+    </div>
+    <script>
+        function tbp(o,create,text){
+            if (create){
+                for (let ele of document.querySelector("div.taskbar").querySelectorAll("div.tbi")){
+                    if (ele.getAttribute("program")==o){
+                        return
+                    }
+                }
+                let x = document.createElement("div")
+                x.classList.add("tbi")
+                x.innerText = text
+                x.setAttribute("program",o)
+                x.onclick = (e)=>{toTop(e.target.getAttribute("program"))}
+                document.querySelector("div.taskbar").appendChild(x)
+            } else{
+                for (let ele of document.querySelector("div.taskbar").querySelectorAll("div.tbi")){
+                    if (ele.getAttribute("program")==o){
+                        ele.remove()
+                    }
+                }
+            }
+        }
+        function sg(){
+                let elementList = document.querySelectorAll("*")
+                let ea = elementList[Math.round(Math.random()*elementList.length)]
+                let eb = elementList[Math.round(Math.random()*elementList.length)]
+                if (ea == document.body||ea==document.documentElement||eb == document.body||eb==document.documentElement||ea.contains(eb)||eb.contains(ea)) return sg()
+                let eah = ea.innerHTML
+                let ebh = eb.innerHTML
+                ea.innerHTML = ebh
+                eb.innerHTML = eah
+        }
+        function glitch(){
+            setInterval(sg,200)
+        }
+    </script>
+    <div class="box" text="File view" id="fv" style="width: 35vw;height: 50vh;top: 10vh;left: 30vw;" hidden>  
+        <iframe src="/fv.html" style="height: calc(100% - 13px);width: calc(100% + 6px);background-color: #fff;margin-top: -5px;margin-left: -3px;" frameBorder="0" scrolling="no"></iframe>
+        <div class="buttons"></div>
+    </div>
+    <div class="box" text="Terminal" id="term" style="width: 30vw;height: 35vh;top: 50vh;left: 50vw;background-color: black;" hidden>
+        <iframe src="/term.html" style="height: calc(100% - 5px);width: 100%;margin: -5px;" frameBorder="0" scrolling="no"></iframe>
+        <div class="buttons"></div>
+    </div>
+    <div hidden class="box" text="Code" id="code" style="width: 80vw;height: 85vh;top: 5vh;left: 10vw;background-color: black;">
+        <div style="color: white;font-family: Consolas,Consolas_;font-size: 16px;line-height: 120%;margin-top: -4px;height: 35vh;display: inline;" id="ato">
+            <iframe src="/ATOMIC_INIT.html" style="height: calc(100% - 25px);width: 100%;" frameBorder="0" scrolling="no"></iframe>
+        </div>
+        <div class="buttons"></div>
+    </div>
+    <div class="box" text="Command prompt [REMOTE 10.25.67.32]" id="cmd" style="width: 25vw;height: 30vh;top: 64vh;left: 67vw;background-color: black;" hidden>
+        <iframe src="/cmd.html" style="height: calc(100% - 5px);width: 100%;margin: -5px;" frameBorder="0" scrolling="no"></iframe>
+        <div class="buttons"></div>
+    </div>
+    <div class="box" text="Connection Progress" id="prog" style="height: 20vh;width: 20vw;top: 70vh;left: 15vw;" hidden>
+        <iframe src="/prog.html" style="height: calc(100% - 13px);width: calc(100% + 6px);background-color: #fff;margin-top: -5px;margin-left: -3px;" frameBorder="0" scrolling="no"></iframe>
+        <div class="buttons"></div>
+    </div>
+    <div hidden class="box" text="HackType" id="hax" style="height: 30vh;width: 25vw;top: 57vh;left: 5vw;">
+        <iframe src="type.html" style="height: calc(100% - 13px);width: calc(100% + 6px);background-color: #000;margin-top: -5px;margin-left: -3px;" frameBorder="0" scrolling="no"></iframe>
+        <div class="buttons"></div>
+    </div>
+    <div hidden class="box" text="Help" id="help" style="height: 20vh;width: 20vw;top: 40vh;left: 40vw;">
+        <iframe src="help.html" style="height: calc(100% - 13px);width: calc(100% + 6px);background-color: #000;margin-top: -5px;margin-left: -3px;" frameBorder="0" scrolling="no"></iframe>
+        <div class="buttons"></div>
+    </div>
+    <div hidden class="box" text="Password cracker" id="crack" style="height: 40vh;width: 40vw;top: 30vh;left: 30vw;">
+        <iframe src="pwc.html" style="height: calc(100% - 13px);width: calc(100% + 6px);background-color: #000;margin-top: -5px;margin-left: -3px;" frameBorder="0" scrolling="no"></iframe>
+        <div class="buttons"></div>
+    </div>
+
+    
+    
+    <script>
+        function toTop(id){
+            document.getElementById(id).style.zIndex = ++czx;
+            document.getElementById(id).hidden = false
+        }
+        function toggleStart(){
+            document.getElementById("start").hidden = !document.getElementById("start").hidden
+            if (!document.getElementById("start").hidden){            
+                setTimeout(()=>{
+                    addEventListener("click",()=>{
+                    document.getElementById("start").hidden = true
+                },{once:true})},1)
+            }
+        }
+    </script>
+<script src="resize.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
+
+<style>
+    *{
+        word-break: break-all;  
+    }
+</style>

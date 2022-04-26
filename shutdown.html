@@ -1,0 +1,54 @@
+<div class="loading">It is now safe to turn off your computer.</div>
+<div class="icon">HackerOS</div>
+<style>
+    *{
+        margin: 0;
+        background-color: #000;
+    }
+    .loading{
+        margin-top: 70vh;
+        margin-left: 0vw;
+        height: 20px;
+        width: 100vw;
+        color: white;
+        background-color: black;
+        text-align: center;
+        font-family: Consolas,Consolas_;
+    }
+    .icon{
+        display: block;
+        position: absolute;
+        width: 20vw;
+        height: 10vw;
+        border: 1px solid white;
+        top: 20vh;
+        left: 40vw;
+        color: white;
+        font-family: Consolas,Consolas_;
+        font-size: 5vh;
+        text-align: center;
+        padding-top: 8.5vw;
+        line-height: 0px;
+    }
+    .loadingb{
+        margin-top: -20px;
+        margin-left: 40vw;
+        height: 20px;
+        width: 0vw;
+        background-color: #0f0;
+        animation: load 10s 1 linear;
+    }
+    @keyframes load{
+        0%{width: 0vw;}
+        30%{width: 5vw;}
+        50%{width: 15vw;}
+        90%{width: 15vw;background-color: #0f0;}
+        100%{width: 20vw;background-color: #fff;}
+    }
+    
+    @font-face{
+        font-family: Consolas_;
+        src: url("/Consolas.ttf");
+    }
+
+</style>

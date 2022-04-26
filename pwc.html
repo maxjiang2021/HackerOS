@@ -1,0 +1,30 @@
+<div style="font-size: 50px;text-align: center;height: 100vh;margin-top: 50vh;transform: translateY(-20%);color: #0f0;padding: 10px;">
+    <span id="crack">Password cracker</span>
+    <br><br>
+    <button style="height: 50px;padding: 5px;background-color: black;color: white;;outline: none;border: 1px solid white;font-size: 50px;" onclick="launch()">Launch brute-force attack</button>
+        </div>
+
+<style>
+    @font-face {
+    font-family: Windows;
+    src: url("/LEVIWINDOWS.TTF");
+}div,button{font-family: Windows, monospace;
+    padding: 2px;
+    font-size: 25px;
+    line-height: 50%;}
+</style>
+
+<script>
+    ac = 'abcdefghijklmnopqrstuvwxyz1234567890'
+    onclick = (e)=>{top.toTop("crack")}
+    crack = document.getElementById("crack")
+    function launch(){
+        d = 0
+        for (;d<10000;d+=10){
+            setTimeout(()=>{
+                crack.innerText = Math.random().toString(36).replace(/[^a-z1-9]+/g, '')+Math.random().toString(36).replace(/[^a-z1-9]+/g, '');
+            },d)
+        }
+        setTimeout(()=>{crack.innerText = "FOUND: "+crack.innerText},10020)
+    }
+</script>
